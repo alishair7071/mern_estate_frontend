@@ -11,6 +11,7 @@ const SignIn= ()=>{
     const { loading, error } = useSelector((store)=>store.user)
     const navigate= useNavigate();
     const dispatch= useDispatch();
+    console.log('sing in rendered')
 
 
     const handleChange= (e)=>{
@@ -34,6 +35,7 @@ const SignIn= ()=>{
                 }
             );
             const jsonData= await response.json();
+            console.log(jsonData);
             if(jsonData.success===false){
                 dispatch(signInFailure(jsonData.message));
                 return;
