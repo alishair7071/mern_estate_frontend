@@ -34,13 +34,14 @@ const SignIn= ()=>{
                     body: JSON.stringify(formData)
                 }
             );
+            console.log(response+ 'custom console');
             const jsonData= await response.json();
             if(jsonData.success===false){
                 console.log('success failed');
                 dispatch(signInFailure(jsonData.message));
                 return;
             }
-            console.log(jsonData);
+            console.log(jsonData+ 'custom');
             dispatch(signInSuccess(jsonData));
             navigate('/');
     
