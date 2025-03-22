@@ -25,7 +25,7 @@ const SignIn= ()=>{
         e.preventDefault();
         dispatch(signInStart());
         try{
-            const response= await fetch('/api/auth/sign-in',
+            const response= await fetch('https://mern-estate-backend-delta.vercel.app/auth/sign-in',
                 {
                     method :"POST",
                     headers: {
