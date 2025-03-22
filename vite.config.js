@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api':{
-        target: 'https://mern-estate-backend-jet.vercel.app',
+        target: 'https://mern-estate-backend-delta.vercel.app',
         secure: false,
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
