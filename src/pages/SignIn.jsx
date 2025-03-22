@@ -11,7 +11,7 @@ const SignIn= ()=>{
     const { loading, error } = useSelector((store)=>store.user)
     const navigate= useNavigate();
     const dispatch= useDispatch();
-    console.log('sing in rendered custom')
+    console.log('sing in rendered customee')
 
 
     const handleChange= (e)=>{
