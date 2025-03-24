@@ -85,7 +85,7 @@ const Search = () => {
         setShowMore(false);
       setLoading(true);
       const searchQuery = urlParams.toString();
-      const response = await fetch(`/api/listing/get?${searchQuery}`);
+      const response = await fetch(`https://mern-estate-backend-delta.vercel.app/listing/get?${searchQuery}`);
       const jsonData = await response.json();
       console.log(jsonData);
       setListings(jsonData);
