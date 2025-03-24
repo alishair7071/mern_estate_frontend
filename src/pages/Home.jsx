@@ -8,7 +8,7 @@ import "swiper/css/bundle";
 import ListingItem from "../components/ListingItem";
 
 const Home = () => {
-  const API_BASE_URL = process.env.BACKEND_URL_DEPLOYED_VERCEL; 
+  const API_BASE_URL = import.meta.env.BACKEND_URL_DEPLOYED_VERCEL;
   SwiperCore.use([Navigation]);
   const [offerListing, setOfferListing] = useState([]);
   const [rentListing, setRentListing] = useState([]);

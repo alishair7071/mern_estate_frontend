@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const SignUp= ()=>{
-    const API_BASE_URL = process.env.BACKEND_URL_DEPLOYED_VERCEL; 
+    const API_BASE_URL = import.meta.env.BACKEND_URL_DEPLOYED_VERCEL; 
 
     const [formData, setFormData] =useState({});
     const [loading, setLoading]= useState(false);

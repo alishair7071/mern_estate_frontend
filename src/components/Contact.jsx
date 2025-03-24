@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const Contact = ({ listing }) => {
-  const API_BASE_URL = process.env.BACKEND_URL_DEPLOYED_VERCEL; 
+  const API_BASE_URL = import.meta.env.BACKEND_URL_DEPLOYED_VERCEL; 
   const [landLord, setLandLord] = useState(null);
   const [message, setMessage ]= useState('');
   const onChange = (e)=>{

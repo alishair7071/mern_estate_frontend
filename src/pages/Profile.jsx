@@ -17,7 +17,7 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Profile = () => {
-  const API_BASE_URL = process.env.BACKEND_URL_DEPLOYED_VERCEL; 
+  const API_BASE_URL = import.meta.env.BACKEND_URL_DEPLOYED_VERCEL; 
   let fileRef = useRef(null);
   const { currentUser, error } = useSelector((store) => store.user);
   const [imageUrl, setImageUrl] = useState("");

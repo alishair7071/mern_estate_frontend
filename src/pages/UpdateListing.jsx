@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
 const UpdateListing = () => {
-  const API_BASE_URL = process.env.BACKEND_URL_DEPLOYED_VERCEL; 
+  const API_BASE_URL = import.meta.env.BACKEND_URL_DEPLOYED_VERCEL; 
   const [files, setFiles] = useState([]);
   const [error, setError] = useState(null);
  const navigate =  useNavigate();

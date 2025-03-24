@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 const OAuth = () => {
 
-  const API_BASE_URL = process.env.BACKEND_URL_DEPLOYED_VERCEL; 
+  const API_BASE_URL = import.meta.env.BACKEND_URL_DEPLOYED_VERCEL; 
   const dispatch = useDispatch();
   const { loading, error } = useSelector((store) => store.user);
   const navigate = useNavigate();
