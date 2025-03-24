@@ -21,7 +21,7 @@ const Home = () => {
     const fetchOfferListing = async () => {
       try {
         console.log("entered in try of offer final");
-        const response = await fetch(`${API_BASE_URL}/listing/get?type=all&limit=4`, {
+        const response = await fetch(`https://mern-estate-backend-delta.vercel.app/listing/get?type=all&limit=4`, {
           method: "GET"
         });
         const jsonData = await response.json();
