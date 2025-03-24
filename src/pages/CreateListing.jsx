@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const CreateListing = () => {
+  const API_BASE_URL = process.env.BACKEND_URL_DEPLOYED_VERCEL; 
   const [files, setFiles] = useState([]);
   const [error, setError] = useState(null);
  const navigate =  useNavigate();
@@ -107,7 +108,7 @@ const CreateListing = () => {
     try {
       setLoadingForServer(true);
 
-      const response = await fetch("/api/listing/create-list", {
+      const response = await fetch(`${API_BASE_URL}/listing/create-list`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

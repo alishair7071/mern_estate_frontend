@@ -6,7 +6,7 @@ import OAuth from "../components/OAuth";
 
 const SignIn= ()=>{
 
-
+    const API_BASE_URL = process.env.BACKEND_URL_DEPLOYED_VERCEL; 
     const [formData, setFormData] =useState({});
     const { loading, error } = useSelector((store)=>store.user)
     const navigate= useNavigate();
@@ -26,7 +26,7 @@ const SignIn= ()=>{
         dispatch(signInStart());
         try{
             console.log("entered in try of signIn final");
-            const response= await fetch('https://mern-estate-backend-delta.vercel.app/auth/sign-in',
+            const response= await fetch(`${API_BASE_URL}/auth/sign-in`,
                 {
                     method :"POST",
                     headers: {

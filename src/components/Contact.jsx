@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const Contact = ({ listing }) => {
+  const API_BASE_URL = process.env.BACKEND_URL_DEPLOYED_VERCEL; 
   const [landLord, setLandLord] = useState(null);
   const [message, setMessage ]= useState('');
   const onChange = (e)=>{
@@ -11,7 +12,7 @@ const Contact = ({ listing }) => {
   useEffect(() => {
     const fetchLandLord = async () => {
       try {
-        const response = await fetch(`/api/user/${listing.userRef}`);
+        const response = await fetch(`${API_BASE_URL}/user/${listing.userRef}`);
         const jsonData = await response.json();
         setLandLord(jsonData);
       } catch (e) {

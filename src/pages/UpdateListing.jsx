@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
 const UpdateListing = () => {
+  const API_BASE_URL = process.env.BACKEND_URL_DEPLOYED_VERCEL; 
   const [files, setFiles] = useState([]);
   const [error, setError] = useState(null);
  const navigate =  useNavigate();
@@ -32,7 +33,7 @@ const UpdateListing = () => {
   useEffect(()=>{
 
     const fetchListing= async ()=>{
-            const response= await fetch(`/api/listing/getListing/${params.id}`);
+            const response= await fetch(`${API_BASE_URL}/listing/getListing/${params.id}`);
 
             const jsonData= await response.json();
             if(jsonData.success== false){
@@ -125,7 +126,7 @@ const UpdateListing = () => {
     try {
       setLoadingForServer(true);
 
-      const response = await fetch(`/api/listing/updateListing/${params.id}`, {
+      const response = await fetch(`${API_BASE_URL}/listing/updateListing/${params.id}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

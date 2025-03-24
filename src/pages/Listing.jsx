@@ -17,6 +17,7 @@ import {
 import { useSelector } from "react-redux";
 
 const Listing = () => {
+  const API_BASE_URL = process.env.BACKEND_URL_DEPLOYED_VERCEL; 
   SwiperCore.use([Navigation]);
   const params = useParams();
   const [listing, setListing] = useState(null);
@@ -29,7 +30,7 @@ const Listing = () => {
   useEffect(() => {
     const fetchListing = async () => {
       try {
-        const response = await fetch(`/api/listing/getListing/${params.id}`);
+        const response = await fetch(`${API_BASE_URL}/listing/getListing/${params.id}`);
         const jsonData = await response.json();
         if (jsonData.success == false) {
           console.log(jsonData.message);

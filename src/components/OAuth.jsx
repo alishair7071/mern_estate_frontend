@@ -9,6 +9,8 @@ import {
 import { useNavigate } from "react-router-dom";
 
 const OAuth = () => {
+
+  const API_BASE_URL = process.env.BACKEND_URL_DEPLOYED_VERCEL; 
   const dispatch = useDispatch();
   const { loading, error } = useSelector((store) => store.user);
   const navigate = useNavigate();
@@ -27,7 +29,7 @@ const OAuth = () => {
       const result = await signInWithPopup(auth, Provider);
      // console.log(result);
 
-      const response = await fetch("/api/auth/google", {
+      const response = await fetch(`${API_BASE_URL}/auth/google`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -8,6 +8,7 @@ import "swiper/css/bundle";
 import ListingItem from "../components/ListingItem";
 
 const Home = () => {
+  const API_BASE_URL = process.env.BACKEND_URL_DEPLOYED_VERCEL; 
   SwiperCore.use([Navigation]);
   const [offerListing, setOfferListing] = useState([]);
   const [rentListing, setRentListing] = useState([]);
@@ -20,7 +21,7 @@ const Home = () => {
     const fetchOfferListing = async () => {
       try {
         console.log("entered in try of offer final");
-        const response = await fetch("https://mern-estate-backend-delta.vercel.app/listing/get?type=all", {
+        const response = await fetch(`${API_BASE_URL}/listing/get?type=all&limit=4`, {
           method: "GET"
         });
         const jsonData = await response.json();
@@ -36,7 +37,7 @@ const Home = () => {
 
     const fetchRentListing = async () => {
       try {
-        const response = await fetch("https://mern-estate-backend-delta.vercel.app/listing/get?type=rent&limit=4");
+        const response = await fetch(`${API_BASE_URL}/listing/get?type=rent&limit=4`);
         const jsonData = await response.json();
         setRentListing(jsonData);
         fetchSaleListing();
@@ -47,7 +48,7 @@ const Home = () => {
 
     const fetchSaleListing = async () => {
       try {
-        const response = await fetch("https://mern-estate-backend-delta.vercel.app/listing/get?type=sale&limit=4");
+        const response = await fetch(`${API_BASE_URL}/listing/get?type=sale&limit=4`);
         const jsonData = await response.json();
         setSaleListing(jsonData);
       } catch (e) {

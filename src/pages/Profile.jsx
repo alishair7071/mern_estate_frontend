@@ -17,6 +17,7 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Profile = () => {
+  const API_BASE_URL = process.env.BACKEND_URL_DEPLOYED_VERCEL; 
   let fileRef = useRef(null);
   const { currentUser, error } = useSelector((store) => store.user);
   const [imageUrl, setImageUrl] = useState("");
@@ -58,7 +59,7 @@ const Profile = () => {
     e.preventDefault();
     try {
       dispatch(uploadStart());
-      const response = await fetch(`/api/user/update/${currentUser._id}`, {
+      const response = await fetch(`${API_BASE_URL}/user/update/${currentUser._id}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -84,7 +85,7 @@ const Profile = () => {
   const deleteUser = async () => {
     try {
       dispatch(deleteStart());
-      const response = await fetch(`/api/user/delete/${currentUser._id}`, {
+      const response = await fetch(`${API_BASE_URL}/user/delete/${currentUser._id}`, {
         method: "DELETE",
       });
       const jsonData = response.json();
@@ -102,7 +103,7 @@ const Profile = () => {
   const signOut = async () => {
     try {
       dispatch(signOutStart());
-      const res = await fetch("/api/auth/sign-out", { method: "GET" });
+      const res = await fetch(`${API_BASE_URL}/auth/sign-out`, { method: "GET" });
       const jsonData = await res.json();
       if (jsonData.success == false) {
         dispatch(signOutFailure(jsonData.message));
@@ -117,7 +118,7 @@ const Profile = () => {
   //get user's all listings from server
   const handleShowListing = async () => {
     try {
-      const response = await fetch(`/api/user/listings/${currentUser._id}`, {
+      const response = await fetch(`${API_BASE_URL}/user/listings/${currentUser._id}`, {
         method: "GET",
       });
       const jsonData = await response.json();
@@ -137,7 +138,7 @@ const Profile = () => {
 
   const delListing= async (id)=>{
     try{
-      const response = await fetch(`/api/listing/delete/${id}`, {
+      const response = await fetch(`${API_BASE_URL}/listing/delete/${id}`, {
         method: 'DELETE',
       });
       const jsonData= await response.json();
