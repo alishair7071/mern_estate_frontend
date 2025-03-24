@@ -11,7 +11,7 @@ const SignIn= ()=>{
     const { loading, error } = useSelector((store)=>store.user)
     const navigate= useNavigate();
     const dispatch= useDispatch();
-    console.log('sing in rendered customee')
+    console.log('sing in rendered final')
 
 
     const handleChange= (e)=>{
@@ -25,6 +25,7 @@ const SignIn= ()=>{
         e.preventDefault();
         dispatch(signInStart());
         try{
+            console.log("entered in try of signIn final");
             const response= await fetch('https://mern-estate-backend-delta.vercel.app/auth/sign-in',
                 {
                     method :"POST",
@@ -38,16 +39,19 @@ const SignIn= ()=>{
             const jsonData= await response.json();
             if(jsonData.success===false){
                 console.log('success failed');
+                console.log(jsonData+ "from succes fail");
                 dispatch(signInFailure(jsonData.message));
                 return;
             }
-            console.log(jsonData+ 'custom');
+            console.log(jsonData+ 'custom final');
             dispatch(signInSuccess(jsonData));
             navigate('/');
     
         } catch(e){
+            console.log("entered in catch of signIn final");
             dispatch(signInFailure(e.message));
             console.log(e.message);
+            
         }
         
     }

@@ -13,16 +13,23 @@ const Home = () => {
   const [rentListing, setRentListing] = useState([]);
   const [saleListing, setSaleListing] = useState([]);
   console.log(saleListing);
+  console.log('home is rendered final');
 
   useEffect(() => {
+
     const fetchOfferListing = async () => {
       try {
-        const response = await fetch("https://mern-estate-backend-delta.vercel.app/listing/get?offer=true&limit=4");
+        console.log("entered in try of offer final");
+        const response = await fetch("https://mern-estate-backend-delta.vercel.app/listing/get?type=all", {
+          method: "GET"
+        });
         const jsonData = await response.json();
         setOfferListing(jsonData);
+        console.log(jsonData);
         fetchRentListing();
       } catch (e) {
         console.log(e);
+        console.log("entered in catch of offer final:  "+e);
       }
     };
     fetchOfferListing();
