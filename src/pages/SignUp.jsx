@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const SignUp= ()=>{
-    const API_BASE_URL = import.meta.env.BACKEND_URL_DEPLOYED_VERCEL; 
+     
 
     const [formData, setFormData] =useState({});
     const [loading, setLoading]= useState(false);
@@ -21,7 +21,7 @@ const SignUp= ()=>{
         e.preventDefault();
         setLoading(true);
         try{
-            const response= await fetch(`${API_BASE_URL}/auth/sign-up`,
+            const response= await fetch(`https://mern-estate-backend-delta.vercel.app/auth/sign-up`,
                 {
                     method :"POST",
                     headers: {

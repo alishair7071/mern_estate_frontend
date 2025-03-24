@@ -7,7 +7,7 @@ const Search = () => {
   const [loading, setLoading] = useState(false);
   const [listings, setListings] = useState([]);
   const [showMore, setShowMore] = useState(false);
-  const API_BASE_URL = import.meta.env.BACKEND_URL_DEPLOYED_VERCEL; 
+   
 
   const [sideBarData, setSideBarData] = useState({
     searchTerm: "",
@@ -86,7 +86,7 @@ const Search = () => {
         setShowMore(false);
       setLoading(true);
       const searchQuery = urlParams.toString();
-      const response = await fetch(`${API_BASE_URL}/listing/get?${searchQuery}`);
+      const response = await fetch(`https://mern-estate-backend-delta.vercel.app/listing/get?${searchQuery}`);
       const jsonData = await response.json();
       console.log(jsonData);
       setListings(jsonData);
@@ -128,7 +128,7 @@ const Search = () => {
     urlParams.set('startIndex', startIndex);
     const searchQuery= urlParams.toString();
 
-    const response = await fetch(`${API_BASE_URL}/listing/get?${searchQuery}`);
+    const response = await fetch(`https://mern-estate-backend-delta.vercel.app/listing/get?${searchQuery}`);
     const jsonData = await response.json();
     setShowMore(false);
     console.log(jsonData)
