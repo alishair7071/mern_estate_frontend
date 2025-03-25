@@ -29,6 +29,7 @@ const SignIn= ()=>{
             const response= await fetch(`https://mern-estate-backend-delta.vercel.app/auth/sign-in`,
                 {
                     method :"POST",
+                    credentials: 'include',
                     headers: {
                         'Content-Type' : 'application/json'
                     },
