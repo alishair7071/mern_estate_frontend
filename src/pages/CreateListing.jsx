@@ -110,6 +110,7 @@ const CreateListing = () => {
 
       const response = await fetch(`https://mern-estate-backend-delta.vercel.app/listing/create-list`, {
         method: "POST",
+        credentials: 'include',
         headers: {
           "Content-Type": "application/json",
         },

@@ -33,7 +33,11 @@ const UpdateListing = () => {
   useEffect(()=>{
 
     const fetchListing= async ()=>{
-            const response= await fetch(`https://mern-estate-backend-delta.vercel.app/listing/getListing/${params.id}`);
+            const response= await fetch(`https://mern-estate-backend-delta.vercel.app/listing/getListing/${params.id}`,
+              {
+                credentials: 'include'
+              }
+            );
 
             const jsonData= await response.json();
             if(jsonData.success== false){
@@ -128,6 +132,7 @@ const UpdateListing = () => {
 
       const response = await fetch(`https://mern-estate-backend-delta.vercel.app/listing/updateListing/${params.id}`, {
         method: "POST",
+        credentials: 'include',
         headers: {
           "Content-Type": "application/json",
         },

@@ -61,6 +61,7 @@ const Profile = () => {
       dispatch(uploadStart());
       const response = await fetch(`https://mern-estate-backend-delta.vercel.app/user/update/${currentUser._id}`, {
         method: "POST",
+        credentials: 'include',
         headers: {
           "Content-Type": "application/json",
         },
@@ -87,6 +88,7 @@ const Profile = () => {
       dispatch(deleteStart());
       const response = await fetch(`https://mern-estate-backend-delta.vercel.app/user/delete/${currentUser._id}`, {
         method: "DELETE",
+        credentials: 'include',
       });
       const jsonData = response.json();
       if (jsonData.success == false) {
@@ -103,7 +105,10 @@ const Profile = () => {
   const signOut = async () => {
     try {
       dispatch(signOutStart());
-      const res = await fetch(`https://mern-estate-backend-delta.vercel.app/auth/sign-out`, { method: "GET" });
+      const res = await fetch(`https://mern-estate-backend-delta.vercel.app/auth/sign-out`,
+         { method: "GET",
+          credentials: 'include'
+          });
       const jsonData = await res.json();
       if (jsonData.success == false) {
         dispatch(signOutFailure(jsonData.message));
@@ -141,6 +146,7 @@ const Profile = () => {
     try{
       const response = await fetch(`https://mern-estate-backend-delta.vercel.app/listing/delete/${id}`, {
         method: 'DELETE',
+        credentials: 'include'
       });
       const jsonData= await response.json();
       if(jsonData.success==false){

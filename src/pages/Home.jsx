@@ -22,7 +22,8 @@ const Home = () => {
       try {
         console.log("entered in try of offer final");
         const response = await fetch(`https://mern-estate-backend-delta.vercel.app/listing/get?type=all&limit=4`, {
-          method: "GET"
+          method: "GET",
+          credentials: 'include'
         });
         const jsonData = await response.json();
         setOfferListing(jsonData);
@@ -37,7 +38,9 @@ const Home = () => {
 
     const fetchRentListing = async () => {
       try {
-        const response = await fetch(`https://mern-estate-backend-delta.vercel.app/listing/get?type=rent&limit=4`);
+        const response = await fetch(`https://mern-estate-backend-delta.vercel.app/listing/get?type=rent&limit=4`,{
+          credentials: 'include'
+        });
         const jsonData = await response.json();
         setRentListing(jsonData);
         fetchSaleListing();
@@ -48,7 +51,9 @@ const Home = () => {
 
     const fetchSaleListing = async () => {
       try {
-        const response = await fetch(`https://mern-estate-backend-delta.vercel.app/listing/get?type=sale&limit=4`);
+        const response = await fetch(`https://mern-estate-backend-delta.vercel.app/listing/get?type=sale&limit=4`,{
+          credentials: 'include'
+        });
         const jsonData = await response.json();
         setSaleListing(jsonData);
       } catch (e) {

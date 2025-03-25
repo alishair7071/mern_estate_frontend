@@ -31,6 +31,7 @@ const OAuth = () => {
 
       const response = await fetch(`https://mern-estate-backend-delta.vercel.app/auth/google`, {
         method: "POST",
+        credentials: 'include',
         headers: {
           "Content-Type": "application/json",
         },

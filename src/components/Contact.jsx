@@ -12,7 +12,11 @@ const Contact = ({ listing }) => {
   useEffect(() => {
     const fetchLandLord = async () => {
       try {
-        const response = await fetch(`https://mern-estate-backend-delta.vercel.app/user/${listing.userRef}`);
+        const response = await fetch(`https://mern-estate-backend-delta.vercel.app/user/${listing.userRef}`,
+          {
+            credentials: 'include'
+          }
+        );
         const jsonData = await response.json();
         setLandLord(jsonData);
       } catch (e) {

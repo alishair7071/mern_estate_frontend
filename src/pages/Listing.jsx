@@ -30,7 +30,11 @@ const Listing = () => {
   useEffect(() => {
     const fetchListing = async () => {
       try {
-        const response = await fetch(`https://mern-estate-backend-delta.vercel.app/listing/getListing/${params.id}`);
+        const response = await fetch(`https://mern-estate-backend-delta.vercel.app/listing/getListing/${params.id}`,
+          {
+            credentials: 'include'
+          }
+        );
         const jsonData = await response.json();
         if (jsonData.success == false) {
           console.log(jsonData.message);
