@@ -120,6 +120,7 @@ const Profile = () => {
     try {
       const response = await fetch(`https://mern-estate-backend-delta.vercel.app/user/listings/${currentUser._id}`, {
         method: "GET",
+        credentials: 'include'
       });
       const jsonData = await response.json();
       if (jsonData.success == false) {
